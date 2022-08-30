@@ -1,0 +1,28 @@
+.storybook-modal{
+  background-color: rgba(204, 204, 204, 0.6);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.storybook-modal-content{
+  background-color: #fff;
+  width: 500px;
+  padding: 15px;
+}
+
+.storybook-modal-content__head{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+}
+
+.storybook-modal--hide{
+  display: none;
+}

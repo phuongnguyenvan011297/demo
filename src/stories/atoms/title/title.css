@@ -1,0 +1,18 @@
+.storybook-title--small{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.storybook-title--medium{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.storybook-title--large{
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* .storybook-title{
+  display: inline-block;
+} */

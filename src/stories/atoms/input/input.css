@@ -1,0 +1,17 @@
+.storybook-input {
+  border-radius: 1em;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+  color: black;
+}
+
+
+.storybook-input:disabled {
+  opacity: 0.4;
+  background: #dcd9d9;
+  cursor: not-allowed;
+}
