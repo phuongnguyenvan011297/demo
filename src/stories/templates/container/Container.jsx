@@ -14,7 +14,7 @@ export const Container = ({ productList }) => {
     setIsModalVisible(false);
   };
   return (
-    <div className="flex">
+    <div className="flex  justify-center flex-wrap">
       {productList.map((product) => {
         return (
           <Product key={product.id}
