@@ -8,7 +8,6 @@ import "./storyModal.css";
 export const StoryModal = ({label, isOpen, onClose, children }) => {
   return (
     <>
-    
     <div className={isOpen ? `storybook-modal` : `storybook-modal--hide`}>
       <div className="bg-white  py-7 px-10 w-125">
         <div className="storybook-modal-content__head">

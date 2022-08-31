@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Product } from "../../organisms/product/Product";
 import { StoryModal } from "../../molecules/storyModal/StoryModal";
+import { Pagination } from "../../atoms/pagination/Pagination";
 
 export const Container = ({ productList }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -14,6 +15,7 @@ export const Container = ({ productList }) => {
     setIsModalVisible(false);
   };
   return (
+    <>
     <div className="flex  justify-center flex-wrap">
       {productList.map((product) => {
         return (
@@ -25,7 +27,6 @@ export const Container = ({ productList }) => {
           />
         );
       })}
-
       <StoryModal
         label={item.info}
         isOpen={isModalVisible}
@@ -34,6 +35,8 @@ export const Container = ({ productList }) => {
         <Product url={item.img} info={item.info} price={item.price} />
       </StoryModal>
     </div>
+    <Pagination count={4} />
+    </>
   );
 };
 

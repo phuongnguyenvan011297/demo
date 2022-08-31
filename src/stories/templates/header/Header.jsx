@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Title } from "../../atoms/title/Title";
 import { StoryModal } from "../../molecules/storyModal/StoryModal";
@@ -7,16 +7,30 @@ import { Input } from "../../atoms/input/Input";
 
 import "./header.css";
 import { Button } from "../../atoms/button/Button";
+import { Notistack } from "../../atoms/notistack/Notistack";
 
 export const Header = ({ user, onLogout, onCreateAccount }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+
   const showModal = () => {
     setIsModalVisible(true);
   };
   const handleClose = () => {
     setIsModalVisible(false);
+  };
+  const handleLoggin = () => {
+    setIsModalVisible(false);
+    setShow(true);
+    setTimeout(() => {
+      setShow(false);
+    }, 2000);
+    console.log({
+      userName,
+      password,
+    });
   };
 
   const handleChangeName = (e) => {
@@ -74,26 +88,29 @@ export const Header = ({ user, onLogout, onCreateAccount }) => {
           )}
         </div>
         <StoryModal label="Login" isOpen={isModalVisible} onClose={handleClose}>
-        <StoryForm label="Login"  >
-          <div className="flex py-4 ">
-            <Title label="User Name" className="w-10" />
-            <Input
-              placeholder="username"
-              value={userName}
-              onChange={handleChangeName}
-            />
-          </div>
-          <div className="flex py-2 ">
-            <Title label="Password" />
-            <Input
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={handleChangePassword}
-            />
-          </div>
-        </StoryForm>
-      </StoryModal>
+          <StoryForm label="Login" onClick={handleLoggin}>
+            <div className="flex py-4 ">
+              <Title label="User Name" className="w-10" />
+              <Input
+                placeholder="username"
+                value={userName}
+                onChange={handleChangeName}
+              />
+            </div>
+            <div className="flex py-2 ">
+              <Title label="Password" />
+              <Input
+                type="password"
+                placeholder="password"
+                value={password}
+                onChange={handleChangePassword}
+              />
+            </div>
+          </StoryForm>
+        </StoryModal>
+      </div>
+      <div className={[`${show === false ? "hidden" : "block"}`]}>
+        <Notistack content="Login thành công" />
       </div>
     </header>
   );
@@ -101,7 +118,7 @@ export const Header = ({ user, onLogout, onCreateAccount }) => {
 
 Header.propTypes = {
   user: PropTypes.shape({}),
- 
+
   onLogout: PropTypes.func.isRequired,
   onCreateAccount: PropTypes.func.isRequired,
 };

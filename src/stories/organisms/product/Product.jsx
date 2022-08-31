@@ -8,7 +8,7 @@ export const Product = ({info, url, price, onClick})=> {
   return (
     <div className='m-4 cursor-pointer' onClick={onClick}>
       <Img url={url}/>
-      <Title label={info} />
+      <div><Title label={info} /></div>
       <Title label={price} size='small' />
     </div>
   );

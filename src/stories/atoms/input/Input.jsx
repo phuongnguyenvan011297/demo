@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import './input.css'
 
 
-
-
 export const Input = ({ disabled, type, placeholder, value, onChange, ...props })=>{
   return (
     <input

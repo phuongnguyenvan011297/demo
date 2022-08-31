@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -26,12 +28,22 @@ module.exports = {
   },
   // Add the following block of code in addition to what's existing
   webpackFinal: async (config) => {
-    config.resolve.plugins = [
-      ...(config.resolve.plugins || []),
-      new TsconfigPathsPlugin({
-        extensions: config.resolve.extensions,
-      }),
-    ];
-    return config;
-  },
+    config.module.rules.push({
+      test: /\,css&/,
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: [
+              require('tailwindcss'),
+              require('autoprefixer')
+            ]
+          }
+        }
+      ],
+      include: path.resolve(__dirname, '../'),
+    })
+    return config
+  }
 };
